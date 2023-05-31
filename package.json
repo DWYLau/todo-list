@@ -1,0 +1,26 @@
+{
+  "name": "todo-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DWYLau/todo-list.git"
+  },
+  "keywords": [
+    "todo-list"
+  ],
+  "author": "Derek Lau",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DWYLau/todo-list/issues"
+  },
+  "homepage": "https://github.com/DWYLau/todo-list#readme",
+  "devDependencies": {
+    "webpack": "^5.84.1",
+    "webpack-cli": "^5.1.1"
+  }
+}
