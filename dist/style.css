@@ -1,0 +1,61 @@
+@font-face {
+  font-family: Roboto;
+  src: url(fonts/Roboto-Regular.ttf);
+}
+
+.header {
+  font-family: Roboto;
+  display: flex;
+  height: 15vh;
+  width: 100vw;
+  background-color: green;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.header > h1 {
+  font-size: 4em;
+  font-weight: bold;
+}
+
+.menu {
+  position: absolute;
+  left: 50px;
+  height: 70px;
+  width: 70px;
+  cursor: pointer;
+}
+
+.sidepanel {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 130px;
+  left: 0;
+  background-color: black;
+  overflow-x: hidden;
+  padding-top: 30px;
+  transition: 0.5s;
+}
+
+.sidepanel a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidepanel a:hover {
+  color: #f1f1f1;
+}
+
+.sidepanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
