@@ -1,1 +1,1 @@
-(()=>{"use strict";var e={};(e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})})(e),(0,e.default)()})();
+(()=>{"use strict";document.querySelector(".menu").addEventListener("click",(function(){document.getElementById("mySidepanel").style.width="250px",console.log("YEAH GGGG")})),document.querySelector(".closebtn").addEventListener("click",(function(){document.getElementById("mySidepanel").style.width="0",console.log("FUCK SAKE")}))})();
