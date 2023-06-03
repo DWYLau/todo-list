@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="style.css" />
     <title>To-do List</title>
   </head>
-  <script src="main.js"></script>
   <body>
     <header class="header">
       <img class="menu" src="./images/menu.svg" alt="menu" />
@@ -18,15 +17,9 @@
     <div id="navbar" class="nav">
       <a href="javascript:void(0)" class="closebtn">×</a>
       <div class="tab">
-        <button class="tablinks" onclick="openTab(event, alltasks)">
-          All Tasks
-        </button>
-        <button class="tablinks" onclick="openTab(event, 'today')">
-          Today
-        </button>
-        <button class="tablinks" onclick="openTab(event, 'week')">
-          This Week
-        </button>
+        <button class="tablinks active">All Tasks</button>
+        <button class="tablinks">Today</button>
+        <button class="tablinks">This Week</button>
       </div>
 
       <div class="buttons">
@@ -36,19 +29,16 @@
     </div>
 
     <div id="main">
-      <div id="alltasks" class="tabcontent">
+      <div id="alltasks" class="tabcontent active">
         <h3>All Tasks</h3>
-        <p>All Tasks</p>
       </div>
 
       <div id="today" class="tabcontent">
         <h3>Today</h3>
-        <p>Today's Tasks</p>
       </div>
 
       <div id="week" class="tabcontent">
         <h3>This Week</h3>
-        <p>This Week's Tasks</p>
       </div>
     </div>
   </body>
