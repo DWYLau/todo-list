@@ -1,1 +1,3 @@
-import * as buttonController from "./buttonController.js";
+import { initialLoad } from "./buttonController.js";
+
+initialLoad();

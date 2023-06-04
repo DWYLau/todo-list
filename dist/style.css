@@ -45,7 +45,7 @@ body {
 
 .nav {
   height: 85vh;
-  width: 230px;
+  width: 250px;
   position: absolute;
   z-index: 1;
   top: 130px;
@@ -61,7 +61,7 @@ body {
 }
 
 .nav a {
-  padding: 8px 8px 8px 32px;
+  padding: 5px 10px 10px 40px;
   text-decoration: none;
   font-size: 25px;
   color: #818181;
@@ -94,7 +94,7 @@ body {
   background: white;
   color: black;
   padding: 22px 16px;
-  margin-top: 25px;
+  margin-top: 10px;
   width: 100%;
   border: none;
   outline: none;
@@ -171,5 +171,95 @@ body {
 }
 
 .addbtns:hover:before {
+  width: 100%;
+}
+
+.form-popup {
+  display: none;
+  position: fixed;
+  top: 200px;
+  right: 600px;
+  border: 2px solid black;
+  z-index: 9;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  gap: 10px;
+  font-family: Roboto;
+  height: 55vh;
+  width: 25vw;
+  padding: 20px;
+}
+
+.form-container h1 {
+  font-size: 2em;
+  font-weight: 300;
+  padding: 5px;
+}
+
+.form-container label {
+  font-size: 1.5em;
+  padding: 5px;
+}
+
+.form-container input {
+  font-size: 1em;
+  margin-left: 5px;
+  padding: 3px;
+  height: 60px;
+  width: 95%;
+}
+
+.form-container input[type="date"] {
+  width: 25%;
+}
+
+.form-container select {
+  height: 60px;
+  width: 27%;
+  padding: 3px;
+  margin-left: 5px;
+  font-size: 1em;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.formbtns {
+  background-color: 9DB2BF;
+  text-align: center;
+  display: inline-block;
+  padding: 2px 5px;
+  border: 1px solid #fff;
+  cursor: pointer;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 5px;
+  height: 60px;
+  width: 150px;
+  font-family: Roboto;
+  font-size: 1.5em;
+}
+
+.formbtns:before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 0;
+  background: rgb(95, 94, 94);
+  left: 0;
+  bottom: 0;
+  transition: all 0.3s;
+  opacity: 0.3;
+}
+
+.formbtns:hover:before {
   width: 100%;
 }

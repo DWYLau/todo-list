@@ -1,16 +1,18 @@
-export * from "./buttonController.js";
+function openSide() {
+  const openBtn = document.querySelector(".menu");
+  openBtn.addEventListener("click", function () {
+    document.getElementById("navbar").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+  });
+}
 
-const openBtn = document.querySelector(".menu");
-openBtn.addEventListener("click", function () {
-  document.getElementById("navbar").style.width = "250px";
-  document.getElementById("main").style.marginLeft = "250px";
-});
-
-const closeBtn = document.querySelector(".closebtn");
-closeBtn.addEventListener("click", function () {
-  document.getElementById("navbar").style.width = "0";
-  document.getElementById("main").style.marginLeft = "0";
-});
+function closeSide() {
+  const closeBtn = document.querySelector(".closebtn");
+  closeBtn.addEventListener("click", function () {
+    document.getElementById("navbar").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+  });
+}
 
 function openTabs() {
   let tabs = document.querySelectorAll(".tablinks");
@@ -30,4 +32,26 @@ function openTabs() {
   });
 }
 
-openTabs();
+function openForm() {
+  const addTask = document.getElementById("addtask");
+  addTask.addEventListener("click", function () {
+    document.querySelector(".form-popup").style.display = "block";
+  });
+}
+
+function closeForm() {
+  const cancelTask = document.getElementById("cancelbtn");
+  cancelTask.addEventListener("click", function () {
+    document.querySelector(".form-popup").style.display = "none";
+  });
+}
+
+function initialLoad() {
+  openSide();
+  closeSide();
+  openTabs();
+  openForm();
+  closeForm();
+}
+
+export { initialLoad };
