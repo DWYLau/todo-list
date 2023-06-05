@@ -1,3 +1,5 @@
+import { createTask } from "./task.js";
+
 function openSide() {
   const openBtn = document.querySelector(".menu");
   openBtn.addEventListener("click", function () {
@@ -17,7 +19,6 @@ function closeSide() {
 function openTabs() {
   let tabs = document.querySelectorAll(".tablinks");
   let tabContents = document.querySelectorAll(".tabcontent");
-  console.log(tabs);
   tabs.forEach((tab, index) => {
     tab.addEventListener("click", () => {
       tabContents.forEach((content) => {
@@ -33,8 +34,8 @@ function openTabs() {
 }
 
 function openForm() {
-  const addTask = document.getElementById("addtask");
-  addTask.addEventListener("click", function () {
+  const openForm = document.getElementById("addtask");
+  openForm.addEventListener("click", function () {
     document.querySelector(".form-popup").style.display = "block";
   });
 }
@@ -46,12 +47,22 @@ function closeForm() {
   });
 }
 
+function addTask() {
+  const addTask = document.getElementById("createtask");
+  addTask.addEventListener("click", function (event) {
+    event.preventDefault();
+    createTask();
+    document.querySelector(".form-popup").style.display = "none";
+  });
+}
+
 function initialLoad() {
   openSide();
   closeSide();
   openTabs();
   openForm();
   closeForm();
+  addTask();
 }
 
-export { initialLoad };
+export { initialLoad, closeForm };

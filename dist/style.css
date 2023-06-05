@@ -116,7 +116,6 @@ body {
 .tabcontent {
   float: left;
   padding: 10px 20px;
-  border: 1px solid;
   width: 95%;
   height: 90%;
   display: none;
@@ -178,7 +177,7 @@ body {
   display: none;
   position: fixed;
   top: 200px;
-  right: 600px;
+  right: 700px;
   border: 2px solid black;
   z-index: 9;
 }
@@ -189,7 +188,7 @@ body {
   background-color: white;
   gap: 10px;
   font-family: Roboto;
-  height: 55vh;
+  height: 60vh;
   width: 25vw;
   padding: 20px;
 }
@@ -203,6 +202,13 @@ body {
 .form-container label {
   font-size: 1.5em;
   padding: 5px;
+}
+
+.error {
+  display: none;
+  font-size: 1em;
+  margin-left: 5px;
+  color: red;
 }
 
 .form-container input {
