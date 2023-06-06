@@ -126,6 +126,7 @@ body {
   font-size: 3.5em;
   text-align: left;
   margin-left: 20px;
+  margin-bottom: 30px;
 }
 
 .tabcontent.active {
@@ -277,4 +278,43 @@ body {
 
 .formbtns:hover:before {
   width: 100%;
+}
+
+.card {
+  font-family: Roboto;
+  font-size: 2em;
+  height: 60px;
+  width: 800px;
+  background-color: grey;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.checkbox {
+  display: grid;
+  place-content: center;
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: black;
+  width: 25px;
+  height: 25px;
+  border: 2.5px solid black;
+  border-radius: 0.2em;
+  transform: translateY(-0.075em);
+}
+
+.checkbox::before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  transform: scale(0);
+  transition: 170ms transform ease-in-out;
+  box-shadow: inset 1em 1em rgb(0, 255, 94);
+}
+
+.checkbox:checked::before {
+  transform: scale(1);
 }

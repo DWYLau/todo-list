@@ -28,13 +28,36 @@ function createTask() {
 
 function appendTask() {
   const allTasksTab = document.getElementById("alltasks");
-  const tasksDivs = allTasksTab.document.querySelectorAll("div");
+  const tasksDivs = allTasksTab.querySelectorAll("div");
   tasksDivs.forEach((div) => div.remove());
 
   myTasks.forEach((task) => {
-    const card = document.createElement(div);
+    const card = document.createElement("div");
     allTasksTab.appendChild(card);
     card.classList.add("card");
+
+    const checkbox = document.createElement("input");
+    checkbox.setAttribute("type", "checkbox");
+    checkbox.classList.add("checkbox");
+
+    const title = document.createElement("p");
+    const description = document.createElement("p");
+    const priority = document.createElement("p");
+    const date = document.createElement("p");
+    const deleteBtn = document.createElement("button");
+    card.appendChild(checkbox);
+    card.appendChild(title);
+    card.appendChild(description);
+    card.appendChild(priority);
+    card.appendChild(date);
+    card.appendChild(deleteBtn);
+
+    title.textContent = task.title;
+    description.textContent = task.description;
+    priority.textContent = task.priority;
+    priority.style.background = "green";
+    date.textContent = task.dueDate;
+    deleteBtn.textContent = "Delete";
   });
 }
 
