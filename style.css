@@ -188,7 +188,7 @@ body {
   background-color: white;
   gap: 10px;
   font-family: Roboto;
-  height: 60vh;
+  height: 50vh;
   width: 25vw;
   padding: 20px;
 }
@@ -215,17 +215,27 @@ body {
   font-size: 1em;
   margin-left: 5px;
   padding: 3px;
-  height: 60px;
+  height: 40px;
   width: 95%;
 }
 
 .form-container input[type="date"] {
+  height: 30px;
   width: 25%;
 }
 
-.form-container select {
+.form-container .small-inputs {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 10px;
+  padding: 5px;
   height: 60px;
-  width: 27%;
+}
+
+.form-container select {
+  height: 40px;
+  width: 20%;
   padding: 3px;
   margin-left: 5px;
   font-size: 1em;
@@ -234,7 +244,6 @@ body {
 .form-buttons {
   display: flex;
   justify-content: center;
-  margin-top: 10px;
 }
 
 .formbtns {
