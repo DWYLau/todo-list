@@ -48,11 +48,12 @@ function closeForm() {
 }
 
 function addTask() {
-  const addTask = document.getElementById("createtask");
-  addTask.addEventListener("click", function (event) {
+  const form = document.querySelector(".form-container");
+  form.addEventListener("submit", function (event) {
     event.preventDefault();
     createTask();
     document.querySelector(".form-popup").style.display = "none";
+    form.reset();
   });
 }
 

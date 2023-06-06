@@ -21,8 +21,21 @@ function createTask() {
     date.value
   );
   myTasks.push(task);
+  appendTask();
   console.log(task);
   console.log(myTasks);
+}
+
+function appendTask() {
+  const allTasksTab = document.getElementById("alltasks");
+  const tasksDivs = allTasksTab.document.querySelectorAll("div");
+  tasksDivs.forEach((div) => div.remove());
+
+  myTasks.forEach((task) => {
+    const card = document.createElement(div);
+    allTasksTab.appendChild(card);
+    card.classList.add("card");
+  });
 }
 
 export { createTask };
