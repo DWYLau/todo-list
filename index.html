@@ -45,9 +45,15 @@
     <div class="form-popup">
       <form action="#" class="form-container">
         <h1>Create a task</h1>
-        <label for="title">Title</label>
-        <input type="text" id="title" placeholder="Title" name="title" />
-        <div class="error">* Please enter a title</div>
+        <label for="title">Title *</label>
+        <input
+          type="text"
+          id="title"
+          placeholder="Title"
+          name="title"
+          required
+        />
+
         <label for="description">Description</label>
         <input
           type="text"
@@ -63,12 +69,12 @@
             <option value="Low">Low</option>
           </select>
 
-          <label for="date">Due Date</label>
-          <input type="date" id="date" name="date" />
+          <label for="date">Due Date *</label>
+          <input type="date" id="date" name="date" required />
         </div>
         <div class="form-buttons">
           <button class="formbtns" id="submitbtn">Submit</button>
-          <button class="formbtns" id="cancelbtn">Cancel</button>
+          <button type="button" class="formbtns" id="cancelbtn">Cancel</button>
         </div>
       </form>
     </div>
