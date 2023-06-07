@@ -41,8 +41,11 @@ function appendTask() {
     checkbox.classList.add("checkbox");
 
     const title = document.createElement("p");
+    title.classList.add("title");
     const description = document.createElement("p");
+    description.classList.add("description");
     const priority = document.createElement("p");
+    priority.classList.add("priority");
     const date = document.createElement("p");
     const deleteBtn = document.createElement("button");
     card.appendChild(checkbox);
@@ -57,7 +60,7 @@ function appendTask() {
     priority.textContent = task.priority;
     priority.style.background = "green";
     date.textContent = task.dueDate;
-    deleteBtn.textContent = "Delete";
+    deleteBtn.textContent = "X";
   });
 }
 

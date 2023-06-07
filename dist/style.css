@@ -282,13 +282,35 @@ body {
 
 .card {
   font-family: Roboto;
-  font-size: 2em;
+  font-size: 1.5em;
   height: 60px;
-  width: 800px;
-  background-color: grey;
+  width: 80%;
+  background-color: #dde6ed;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin: 10px;
+  border-radius: 15px;
+  border-left: 10px solid #9db2bf;
+}
+
+.card .title {
+  position: relative;
+  right: 50px;
+  font-weight: 500;
+  width: 100px;
+}
+
+.card .description {
+  width: 400px;
+}
+
+.card .priority {
+  color: white;
+  padding: 5px;
+  width: 120px;
+  text-align: center;
+  border-radius: 10px;
 }
 
 .checkbox {
@@ -304,6 +326,7 @@ body {
   border: 2.5px solid black;
   border-radius: 0.2em;
   transform: translateY(-0.075em);
+  cursor: pointer;
 }
 
 .checkbox::before {

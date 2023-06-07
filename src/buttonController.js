@@ -42,8 +42,10 @@ function openForm() {
 
 function closeForm() {
   const cancelTask = document.getElementById("cancelbtn");
+  const form = document.querySelector(".form-container");
   cancelTask.addEventListener("click", function () {
     document.querySelector(".form-popup").style.display = "none";
+    form.reset();
   });
 }
 
@@ -66,4 +68,4 @@ function initialLoad() {
   addTask();
 }
 
-export { initialLoad, closeForm };
+export { initialLoad };
