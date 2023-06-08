@@ -1,3 +1,5 @@
+import { isWithinInterval, parseISO } from "date-fns";
+
 let myTasks = [];
 
 export class Task {
@@ -48,6 +50,7 @@ function appendTask() {
     priority.classList.add("priority");
     const date = document.createElement("p");
     const deleteBtn = document.createElement("button");
+    deleteBtn.classList.add("deletebtn");
     card.appendChild(checkbox);
     card.appendChild(title);
     card.appendChild(description);
@@ -61,7 +64,22 @@ function appendTask() {
     priority.style.background = "green";
     date.textContent = task.dueDate;
     deleteBtn.textContent = "X";
+    console.log(task.dueDate);
+    checkDate(task.dueDate);
   });
+}
+
+function checkDate(dueDate) {
+  const today = new Date();
+  const nextSevenDays = new Date(new Date().setDate(new Date().getDate() + 7));
+  console.log(
+    isWithinInterval(parseISO(dueDate), {
+      start: today,
+      end: nextSevenDays,
+    })
+  );
+  console.log(today);
+  console.log(nextSevenDays);
 }
 
 export { createTask };
