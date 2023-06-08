@@ -313,6 +313,19 @@ body {
   border-radius: 10px;
 }
 
+.card .deletebtn {
+  background-color: #dde6ed;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.card .deletebtn:hover {
+  cursor: pointer;
+  background-color: white;
+}
+
 .checkbox {
   display: grid;
   place-content: center;
