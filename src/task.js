@@ -1,4 +1,4 @@
-import { isWithinInterval, parseISO } from "date-fns";
+import { isWithinInterval, parseISO, format } from "date-fns";
 
 let myTasks = [];
 
@@ -24,8 +24,6 @@ function createTask() {
   );
   myTasks.push(task);
   appendToAllTask();
-  console.log(task);
-  console.log(myTasks);
 }
 
 function appendToAllTask() {
@@ -54,6 +52,7 @@ function createCard(tab) {
     const date = document.createElement("p");
     const deleteBtn = document.createElement("button");
     deleteBtn.classList.add("deletebtn");
+
     card.appendChild(checkbox);
     card.appendChild(title);
     card.appendChild(description);
@@ -67,28 +66,27 @@ function createCard(tab) {
     priority.style.background = "green";
     date.textContent = task.dueDate;
     deleteBtn.textContent = "X";
-    checkDate(task.dueDate);
+
+    if (checkDate(task.dueDate) === true) {
+      console.log("hello");
+    }
   });
 }
 
 function checkDate(dueDate) {
   const today = new Date();
+  let day = today.getDate();
+  let month = today.getMonth();
+  let year = today.getFullYear();
+  let formatDate = `${year}-0${month + 1}-${day}`;
+
   const nextSevenDays = new Date(new Date().setDate(new Date().getDate() + 7));
-  if (parseISO(dueDate) === today) {
-    const todayTab = document.getElementById("today");
-    console.log("hellotoday");
-    createCard(todayTab);
-  } else if (
-    isWithinInterval(parseISO(dueDate), {
-      start: today,
-      end: nextSevenDays,
-    })
-  ) {
-    console.log("hellotest");
+
+  if (dueDate === formatDate) {
+    return true;
+  } else {
+    return false;
   }
-  console.log(dueDate);
-  console.log(parseISO(dueDate) === today);
-  console.log(today);
 }
 
 export { createTask };
