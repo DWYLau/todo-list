@@ -95,9 +95,32 @@ function createCard(tab, taskTitle, taskDesc, taskPriority, taskDate) {
   title.textContent = taskTitle;
   description.textContent = taskDesc;
   priority.textContent = taskPriority;
-  priority.style.background = "green";
+  changePriorityColour(priority);
   date.textContent = taskDate;
   deleteBtn.textContent = "X";
+  deleteBtn.addEventListener("click", function () {
+    deleteTask(taskTitle);
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((square) => {
+      square.remove();
+    });
+    appendToProjects();
+  });
+}
+
+function changePriorityColour(priority) {
+  priority.style.color = "black";
+  if (priority.textContent === "High") {
+    priority.style.background = "#FF0000";
+  } else if (priority.textContent === "Medium") {
+    priority.style.background = "#FFFF00";
+  } else {
+    priority.style.background = "#00FF00";
+  }
+}
+function deleteTask(title) {
+  let index = myTasks.findIndex((x) => x.title === title);
+  myTasks.splice(index, 1);
 }
 
 function checkDate(date) {
