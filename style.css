@@ -174,13 +174,25 @@ body {
   width: 100%;
 }
 
-.form-popup {
+.form-popup,
+.form-popup2 {
   display: none;
   position: fixed;
   top: 200px;
   right: 700px;
   border: 2px solid black;
   z-index: 9;
+}
+
+.projectform {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  gap: 25px;
+  font-family: Roboto;
+  height: 30vh;
+  width: 25vw;
+  padding: 20px;
 }
 
 .form-container {
@@ -194,13 +206,15 @@ body {
   padding: 20px;
 }
 
-.form-container h1 {
+.form-container h1,
+.projectform h1 {
   font-size: 2em;
   font-weight: 300;
   padding: 5px;
 }
 
-.form-container label {
+.form-container label,
+.projectform label {
   font-size: 1.5em;
   padding: 5px;
 }
@@ -212,7 +226,8 @@ body {
   color: red;
 }
 
-.form-container input {
+.form-container input,
+.projectform input {
   font-size: 1em;
   margin-left: 5px;
   padding: 3px;
