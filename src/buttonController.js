@@ -41,10 +41,26 @@ function openForm() {
 }
 
 function closeForm() {
-  const cancelTask = document.getElementById("cancelbtn");
+  const cancelForm = document.getElementById("cancelbtn");
   const form = document.querySelector(".form-container");
-  cancelTask.addEventListener("click", function () {
+  cancelForm.addEventListener("click", function () {
     document.querySelector(".form-popup").style.display = "none";
+    form.reset();
+  });
+}
+
+function openProjectForm() {
+  const openProject = document.getElementById("addproject");
+  openProject.addEventListener("click", function () {
+    document.querySelector(".form-popup2").style.display = "block";
+  });
+}
+
+function closeProjectForm() {
+  const cancelForm = document.getElementById("cancelbtn2");
+  const form = document.querySelector(".projectform");
+  cancelForm.addEventListener("click", function () {
+    document.querySelector(".form-popup2").style.display = "none";
     form.reset();
   });
 }
@@ -65,6 +81,8 @@ function initialLoad() {
   openTabs();
   openForm();
   closeForm();
+  openProjectForm();
+  closeProjectForm();
   addTask();
 }
 
