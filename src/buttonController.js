@@ -1,3 +1,4 @@
+import { createProject } from "./project.js";
 import { createTask } from "./task.js";
 
 function openSide() {
@@ -37,6 +38,7 @@ function openForm() {
   const openForm = document.getElementById("addtask");
   openForm.addEventListener("click", function () {
     document.querySelector(".form-popup").style.display = "block";
+    document.querySelector(".form-popup2").style.display = "none";
   });
 }
 
@@ -53,6 +55,7 @@ function openProjectForm() {
   const openProject = document.getElementById("addproject");
   openProject.addEventListener("click", function () {
     document.querySelector(".form-popup2").style.display = "block";
+    document.querySelector(".form-popup").style.display = "none";
   });
 }
 
@@ -75,6 +78,16 @@ function addTask() {
   });
 }
 
+function addProject() {
+  const form = document.querySelector(".projectform");
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    createProject();
+    document.querySelector(".form-popup2").style.display = "none";
+    form.reset();
+  });
+}
+
 function initialLoad() {
   openSide();
   closeSide();
@@ -84,6 +97,7 @@ function initialLoad() {
   openProjectForm();
   closeProjectForm();
   addTask();
+  addProject();
 }
 
 export { initialLoad };

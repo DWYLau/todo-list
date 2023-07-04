@@ -2,7 +2,7 @@ import { isWithinInterval, parseISO, format } from "date-fns";
 
 let myTasks = [];
 
-export class Task {
+class Task {
   constructor(title, description, priority, dueDate) {
     this.title = title;
     this.description = description;
@@ -118,6 +118,7 @@ function changePriorityColour(priority) {
     priority.style.background = "#00FF00";
   }
 }
+
 function deleteTask(title) {
   let index = myTasks.findIndex((x) => x.title === title);
   myTasks.splice(index, 1);
