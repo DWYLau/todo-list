@@ -15,6 +15,10 @@ body {
   height: 85vh;
 }
 
+#deleteproject {
+  width: 250px;
+}
+
 .header {
   font-family: Roboto;
   display: flex;
@@ -88,18 +92,19 @@ body {
   width: 100%;
 }
 
-.tab button {
+.tab > button {
   font-family: Roboto;
   display: block;
   background: white;
   color: black;
-  padding: 22px 16px;
+  padding: 20px 14px;
   margin-top: 10px;
+  height: 60px;
   width: 100%;
   border: none;
   outline: none;
   text-align: center;
-  font-size: 1.3em;
+  font-size: 1.4em;
   cursor: pointer;
   transition: 0.3s;
 }
