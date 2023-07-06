@@ -13,9 +13,9 @@ function createProject() {
   let name = document.getElementById("projectname");
   let project = new Project(name.value);
   myProjects.push(project);
-  console.log(myProjects);
   createTabs();
   createPage();
+  openTabs();
 }
 
 function createTabs() {
@@ -51,16 +51,30 @@ function createPage() {
     addTask.textContent = "Add Task";
     addTask.classList.add("addbtns");
     addTask.setAttribute("id", "addtask");
+    addTask.addEventListener("click", function () {
+      document.querySelector(".form-popup").style.display = "block";
+      document.querySelector(".form-popup2").style.display = "none";
+    });
 
     const deleteProject = document.createElement("button");
     deleteProject.textContent = "Delete Project";
     deleteProject.classList.add("addbtns");
     deleteProject.setAttribute("id", "deleteproject");
+    deleteProject.addEventListener("click", function () {
+      removeProject(project.name);
+    });
 
     mainpage.appendChild(addTask);
     mainpage.appendChild(deleteProject);
-    openTabs();
   });
+}
+
+function removeProject(projectname) {
+  let index = myProjects.findIndex((x) => x.name === projectname);
+  myProjects.splice(index, 1);
+  createTabs();
+  createPage();
+  openTabs();
 }
 
 export { createProject };

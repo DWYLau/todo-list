@@ -100,4 +100,4 @@ function initialLoad() {
   addProject();
 }
 
-export { initialLoad, openTabs };
+export { initialLoad, openTabs, openForm };
