@@ -99,7 +99,7 @@ function createCard(tab, taskTitle, taskDesc, taskPriority, taskDate) {
   date.textContent = taskDate;
   deleteBtn.textContent = "X";
   deleteBtn.addEventListener("click", function () {
-    deleteTask(taskTitle);
+    deleteTask(taskTitle, tasks);
     const cards = document.querySelectorAll(".card");
     cards.forEach((square) => {
       square.remove();
