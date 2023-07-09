@@ -1,6 +1,6 @@
 import { isWithinInterval, parseISO, format } from "date-fns";
 
-let myTasks = [];
+let tasks = [];
 
 class Task {
   constructor(title, description, priority, dueDate) {
@@ -11,7 +11,7 @@ class Task {
   }
 }
 
-function createTask() {
+function createTask(taskArray) {
   let title = document.getElementById("title");
   let description = document.getElementById("description");
   let priority = document.getElementById("priority");
@@ -22,11 +22,11 @@ function createTask() {
     priority.value,
     date.value
   );
-  myTasks.push(task);
-  appendToProjects();
+  taskArray.push(task);
+  appendToProjects(taskArray);
 }
 
-function appendToProjects() {
+function appendToProjects(taskArray) {
   const allTasksTab = document.getElementById("alltasks");
   const allTasksDivs = allTasksTab.querySelectorAll("div");
   allTasksDivs.forEach((div) => div.remove());
@@ -38,7 +38,7 @@ function appendToProjects() {
   const nextSevenTab = document.getElementById("nextseven");
   const nextSevenTaskDivs = nextSevenTab.querySelectorAll("div");
   nextSevenTaskDivs.forEach((div) => div.remove());
-  myTasks.forEach((task) => {
+  taskArray.forEach((task) => {
     createCard(
       allTasksTab,
       task.title,
@@ -119,9 +119,9 @@ function changePriorityColour(priority) {
   }
 }
 
-function deleteTask(title) {
-  let index = myTasks.findIndex((x) => x.title === title);
-  myTasks.splice(index, 1);
+function deleteTask(title, taskArray) {
+  let index = tasks.findIndex((x) => x.title === title);
+  taskArray.splice(index, 1);
 }
 
 function checkDate(date) {
@@ -143,4 +143,4 @@ function checkDate(date) {
   }
 }
 
-export { createTask };
+export { createTask, tasks };

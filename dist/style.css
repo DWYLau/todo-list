@@ -77,7 +77,7 @@ body {
   color: #f1f1f1;
 }
 
-.nav .closebtn {
+.nav .close-button {
   position: absolute;
   top: 0;
   right: 25px;
@@ -147,7 +147,7 @@ body {
   align-items: center;
 }
 
-.addbtns {
+.add-button {
   text-align: center;
   display: inline-block;
   padding: 15px 30px;
@@ -163,7 +163,7 @@ body {
   font-size: 1.2em;
 }
 
-.addbtns:before {
+.add-button:before {
   content: "";
   position: absolute;
   height: 100%;
@@ -175,12 +175,13 @@ body {
   opacity: 0.3;
 }
 
-.addbtns:hover:before {
+.add-button:hover:before {
   width: 100%;
 }
 
-.form-popup,
-.form-popup2 {
+.form-task,
+.form-project,
+.form-project-task {
   display: none;
   position: fixed;
   top: 200px;
@@ -189,7 +190,7 @@ body {
   z-index: 9;
 }
 
-.projectform {
+#projectform {
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -211,15 +212,13 @@ body {
   padding: 20px;
 }
 
-.form-container h1,
-.projectform h1 {
+.form-container h1 {
   font-size: 2em;
   font-weight: 300;
   padding: 5px;
 }
 
-.form-container label,
-.projectform label {
+.form-container label {
   font-size: 1.5em;
   padding: 5px;
 }
@@ -231,8 +230,7 @@ body {
   color: red;
 }
 
-.form-container input,
-.projectform input {
+.form-container input {
   font-size: 1em;
   margin-left: 5px;
   padding: 3px;
@@ -245,7 +243,7 @@ body {
   width: 25%;
 }
 
-.form-container .small-inputs {
+.form-container .inputs {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -262,12 +260,12 @@ body {
   font-size: 1em;
 }
 
-.form-buttons {
+.button-container {
   display: flex;
   justify-content: center;
 }
 
-.formbtns {
+.form-button {
   background-color: 9DB2BF;
   text-align: center;
   display: inline-block;
@@ -284,7 +282,7 @@ body {
   font-size: 1.5em;
 }
 
-.formbtns:before {
+.form-button:before {
   content: "";
   position: absolute;
   height: 100%;
@@ -296,7 +294,7 @@ body {
   opacity: 0.3;
 }
 
-.formbtns:hover:before {
+.form-button:hover:before {
   width: 100%;
 }
 

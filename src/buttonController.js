@@ -1,5 +1,5 @@
 import { createProject } from "./project.js";
-import { createTask } from "./task.js";
+import { createTask, tasks } from "./task.js";
 
 function openSide() {
   const openBtn = document.querySelector(".menu");
@@ -10,7 +10,7 @@ function openSide() {
 }
 
 function closeSide() {
-  const closeBtn = document.querySelector(".closebtn");
+  const closeBtn = document.querySelector(".close-button");
   closeBtn.addEventListener("click", function () {
     document.getElementById("navbar").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
@@ -37,16 +37,17 @@ function openTabs() {
 function openForm() {
   const openForm = document.getElementById("addtask");
   openForm.addEventListener("click", function () {
-    document.querySelector(".form-popup").style.display = "block";
-    document.querySelector(".form-popup2").style.display = "none";
+    document.querySelector(".form-task").style.display = "block";
+    document.querySelector(".form-project").style.display = "none";
+    document.querySelector(".form-project-task").style.display = "none";
   });
 }
 
 function closeForm() {
-  const cancelForm = document.getElementById("cancelbtn");
+  const cancelForm = document.getElementById("taskcancel");
   const form = document.querySelector(".form-container");
   cancelForm.addEventListener("click", function () {
-    document.querySelector(".form-popup").style.display = "none";
+    document.querySelector(".form-task").style.display = "none";
     form.reset();
   });
 }
@@ -54,16 +55,35 @@ function closeForm() {
 function openProjectForm() {
   const openProject = document.getElementById("addproject");
   openProject.addEventListener("click", function () {
-    document.querySelector(".form-popup2").style.display = "block";
-    document.querySelector(".form-popup").style.display = "none";
+    document.querySelector(".form-project").style.display = "block";
+    document.querySelector(".form-task").style.display = "none";
+    document.querySelector(".form-project-task").style.display = "none";
   });
 }
 
 function closeProjectForm() {
-  const cancelForm = document.getElementById("cancelbtn2");
-  const form = document.querySelector(".projectform");
+  const cancelForm = document.getElementById("projectcancel");
+  const form = document.getElementById("projectform");
   cancelForm.addEventListener("click", function () {
-    document.querySelector(".form-popup2").style.display = "none";
+    document.querySelector(".form-project").style.display = "none";
+    form.reset();
+  });
+}
+
+function openProjectTaskForm() {
+  const openForm = document.getElementById("addprojecttask");
+  openForm.addEventListener("click", function () {
+    document.querySelector(".form-project-task").style.display = "block";
+    document.querySelector(".form-task").style.display = "none";
+    document.querySelector(".form-project").style.display = "none";
+  });
+}
+
+function closeProjectTaskForm() {
+  const cancelForm = document.getElementById("projecttaskcancel");
+  const form = document.getElementById("project-task-form");
+  cancelForm.addEventListener("click", function () {
+    document.querySelector(".form-project-task").style.display = "none";
     form.reset();
   });
 }
@@ -72,18 +92,18 @@ function addTask() {
   const form = document.querySelector(".form-container");
   form.addEventListener("submit", function (event) {
     event.preventDefault();
-    createTask();
-    document.querySelector(".form-popup").style.display = "none";
+    createTask(tasks);
+    document.querySelector(".form-task").style.display = "none";
     form.reset();
   });
 }
 
 function addProject() {
-  const form = document.querySelector(".projectform");
+  const form = document.getElementById("projectform");
   form.addEventListener("submit", function (event) {
     event.preventDefault();
     createProject();
-    document.querySelector(".form-popup2").style.display = "none";
+    document.querySelector(".form-project").style.display = "none";
     form.reset();
   });
 }
@@ -96,8 +116,9 @@ function initialLoad() {
   closeForm();
   openProjectForm();
   closeProjectForm();
+  closeProjectTaskForm();
   addTask();
   addProject();
 }
 
-export { initialLoad, openTabs, openForm };
+export { initialLoad, openTabs, openForm, openProjectTaskForm };

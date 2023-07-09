@@ -1,6 +1,6 @@
-import { openTabs } from "./buttonController.js";
+import { openTabs, openProjectTaskForm } from "./buttonController.js";
 
-let myProjects = [];
+let projects = [];
 
 class Project {
   constructor(name) {
@@ -12,17 +12,18 @@ class Project {
 function createProject() {
   let name = document.getElementById("projectname");
   let project = new Project(name.value);
-  myProjects.push(project);
+  projects.push(project);
   createTabs();
   createPage();
   openTabs();
+  openProjectTaskForm();
 }
 
 function createTabs() {
   const sidebar = document.querySelector(".tab");
   const allProjectBtns = sidebar.querySelectorAll(".project");
   allProjectBtns.forEach((button) => button.remove());
-  myProjects.forEach((project) => {
+  projects.forEach((project) => {
     const button = document.createElement("button");
     button.classList.add("tablinks");
     button.classList.add("project");
@@ -36,7 +37,7 @@ function createPage() {
   const allProjectPages = document.querySelectorAll(".page");
   allProjectPages.forEach((page) => page.remove());
 
-  myProjects.forEach((project) => {
+  projects.forEach((project) => {
     const mainpage = document.createElement("div");
     mainpage.setAttribute("id", project.name);
     mainpage.classList.add("tabcontent");
@@ -49,16 +50,15 @@ function createPage() {
 
     const addTask = document.createElement("button");
     addTask.textContent = "Add Task";
-    addTask.classList.add("addbtns");
-    addTask.setAttribute("id", "addtask");
+    addTask.classList.add("add-button");
+    addTask.setAttribute("id", "addprojecttask");
     addTask.addEventListener("click", function () {
-      document.querySelector(".form-popup").style.display = "block";
-      document.querySelector(".form-popup2").style.display = "none";
+      openProjectTaskForm();
     });
 
     const deleteProject = document.createElement("button");
     deleteProject.textContent = "Delete Project";
-    deleteProject.classList.add("addbtns");
+    deleteProject.classList.add("add-button");
     deleteProject.setAttribute("id", "deleteproject");
     deleteProject.addEventListener("click", function () {
       removeProject(project.name);
@@ -70,8 +70,8 @@ function createPage() {
 }
 
 function removeProject(projectname) {
-  let index = myProjects.findIndex((x) => x.name === projectname);
-  myProjects.splice(index, 1);
+  let index = projects.findIndex((x) => x.name === projectname);
+  projects.splice(index, 1);
   createTabs();
   createPage();
   openTabs();

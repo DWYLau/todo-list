@@ -15,7 +15,7 @@
     </header>
 
     <div id="navbar" class="nav">
-      <a href="javascript:void(0)" class="closebtn">×</a>
+      <a href="javascript:void(0)" class="close-button">×</a>
       <div class="tab">
         <button class="tablinks active">All Tasks</button>
         <button class="tablinks">Today</button>
@@ -23,8 +23,8 @@
       </div>
 
       <div class="buttons">
-        <button class="addbtns" id="addtask">Add Task</button>
-        <button class="addbtns" id="addproject">Add Project</button>
+        <button class="add-button" id="addtask">Add Task</button>
+        <button class="add-button" id="addproject">Add Project</button>
       </div>
     </div>
 
@@ -42,7 +42,7 @@
       </div>
     </div>
 
-    <div class="form-popup">
+    <div class="form-task">
       <form action="#" class="form-container">
         <h1>Create a task</h1>
         <label for="title">Title *</label>
@@ -61,7 +61,7 @@
           placeholder="Enter task details"
           name="description"
         />
-        <div class="small-inputs">
+        <div class="inputs">
           <label for="priority">Priority</label>
           <select id="priority" name="priority">
             <option value="High">High</option>
@@ -72,15 +72,17 @@
           <label for="date">Due Date *</label>
           <input type="date" id="date" name="date" required />
         </div>
-        <div class="form-buttons">
-          <button class="formbtns" id="submitbtn">Submit</button>
-          <button type="button" class="formbtns" id="cancelbtn">Cancel</button>
+        <div class="button-container">
+          <button class="form-button" id="submitbutton">Submit</button>
+          <button class="form-button" type="button" id="taskcancel">
+            Cancel
+          </button>
         </div>
       </form>
     </div>
 
-    <div class="form-popup2">
-      <form action="#" class="projectform">
+    <div class="form-project">
+      <form action="#" id="projectform" class="form-container">
         <h1>Create a new project</h1>
         <label for="projectname">Project Name</label>
         <input
@@ -89,9 +91,50 @@
           placeholder="Project Name"
           name="projectname"
         />
-        <div class="form-buttons">
-          <button class="formbtns" id="submitbtn">Submit</button>
-          <button type="button" class="formbtns" id="cancelbtn2">Cancel</button>
+        <div class="button-container">
+          <button class="form-button" id="submitbutton">Submit</button>
+          <button class="form-button" type="button" id="projectcancel">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="form-project-task">
+      <form action="#" id="project-task-form" class="form-container">
+        <h1>Add a task to the project</h1>
+        <label for="title">Title *</label>
+        <input
+          type="text"
+          id="title"
+          placeholder="Title"
+          name="title"
+          required
+        />
+
+        <label for="description">Description</label>
+        <input
+          type="text"
+          id="description"
+          placeholder="Enter task details"
+          name="description"
+        />
+        <div class="inputs">
+          <label for="priority">Priority</label>
+          <select id="priority" name="priority">
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+
+          <label for="date">Due Date *</label>
+          <input type="date" id="date" name="date" required />
+        </div>
+        <div class="button-container">
+          <button class="form-button" id="submitbutton">Submit</button>
+          <button class="form-button" type="button" id="projecttaskcancel">
+            Cancel
+          </button>
         </div>
       </form>
     </div>
