@@ -1,4 +1,4 @@
-import { createProject } from "./project.js";
+import { createProject, createProjectTask } from "./project.js";
 import { createTask, tasks } from "./task.js";
 
 function openSide() {
@@ -108,6 +108,16 @@ function addProject() {
   });
 }
 
+function addProjectTask(projectName, projectTask) {
+  const form = document.getElementById("project-task-form");
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    createProjectTask(projectName, projectTask);
+    document.querySelector(".form-project-task").style.display = "none";
+    form.reset();
+  });
+}
+
 function initialLoad() {
   openSide();
   closeSide();
@@ -121,4 +131,4 @@ function initialLoad() {
   addProject();
 }
 
-export { initialLoad, openTabs, openForm, openProjectTaskForm };
+export { initialLoad, openTabs, openForm, openProjectTaskForm, addProjectTask };

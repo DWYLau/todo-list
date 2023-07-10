@@ -1,4 +1,9 @@
-import { openTabs, openProjectTaskForm } from "./buttonController.js";
+import {
+  openTabs,
+  openProjectTaskForm,
+  addProjectTask,
+} from "./buttonController.js";
+import { Task } from "./task.js";
 
 let projects = [];
 
@@ -17,6 +22,31 @@ function createProject() {
   createPage();
   openTabs();
   openProjectTaskForm();
+  addProjectTask(project.name, project.tasks);
+}
+
+function createProjectTask(projectName, projectTaskArray) {
+  let tabID = document.getElementById(projectName);
+  let title = document.getElementById("project-task-title");
+  let description = document.getElementById("project-task-description");
+  let priority = document.getElementById("project-task-priority");
+  let date = document.getElementById("project-task-date");
+  let task = new Task(
+    title.value,
+    description.value,
+    priority.value,
+    date.value
+  );
+  projectTaskArray.push(task);
+  appendToProjectPage(tabID, projectTaskArray);
+}
+
+function appendToProjectPage(projectID, projectTask) {
+  const projectTab = projectID;
+  const taskArray = projectTask;
+  taskArray.forEach((task) => {
+    console.log(task);
+  });
 }
 
 function createTabs() {
@@ -69,12 +99,12 @@ function createPage() {
   });
 }
 
-function removeProject(projectname) {
-  let index = projects.findIndex((x) => x.name === projectname);
+function removeProject(projectName) {
+  let index = projects.findIndex((x) => x.name === projectName);
   projects.splice(index, 1);
   createTabs();
   createPage();
   openTabs();
 }
 
-export { createProject };
+export { createProject, createProjectTask };

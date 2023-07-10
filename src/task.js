@@ -11,7 +11,7 @@ class Task {
   }
 }
 
-function createTask(taskArray) {
+function createTask() {
   let title = document.getElementById("title");
   let description = document.getElementById("description");
   let priority = document.getElementById("priority");
@@ -22,11 +22,11 @@ function createTask(taskArray) {
     priority.value,
     date.value
   );
-  taskArray.push(task);
-  appendToProjects(taskArray);
+  tasks.push(task);
+  appendToProjects();
 }
 
-function appendToProjects(taskArray) {
+function appendToProjects() {
   const allTasksTab = document.getElementById("alltasks");
   const allTasksDivs = allTasksTab.querySelectorAll("div");
   allTasksDivs.forEach((div) => div.remove());
@@ -38,7 +38,7 @@ function appendToProjects(taskArray) {
   const nextSevenTab = document.getElementById("nextseven");
   const nextSevenTaskDivs = nextSevenTab.querySelectorAll("div");
   nextSevenTaskDivs.forEach((div) => div.remove());
-  taskArray.forEach((task) => {
+  tasks.forEach((task) => {
     createCard(
       allTasksTab,
       task.title,
@@ -119,9 +119,9 @@ function changePriorityColour(priority) {
   }
 }
 
-function deleteTask(title, taskArray) {
+function deleteTask(title) {
   let index = tasks.findIndex((x) => x.title === title);
-  taskArray.splice(index, 1);
+  tasks.splice(index, 1);
 }
 
 function checkDate(date) {
@@ -143,4 +143,4 @@ function checkDate(date) {
   }
 }
 
-export { createTask, tasks };
+export { createTask, Task, tasks };
