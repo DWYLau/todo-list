@@ -108,7 +108,7 @@
           type="text"
           id="project-task-title"
           placeholder="Title"
-          name="title"
+          name="project-task-title"
           required
         />
 
@@ -117,18 +117,23 @@
           type="text"
           id="project-task-description"
           placeholder="Enter task details"
-          name="description"
+          name="project-task-description"
         />
         <div class="inputs">
           <label for="project-task-priority">Priority</label>
-          <select id="project-task-priority" name="priority">
+          <select id="project-task-priority" name="project-task-priority">
             <option value="High">High</option>
             <option value="Medium">Medium</option>
             <option value="Low">Low</option>
           </select>
 
           <label for="project-task-date">Due Date *</label>
-          <input type="date" id="project-task-date" name="date" required />
+          <input
+            type="date"
+            id="project-task-date"
+            name="project-task-date"
+            required
+          />
         </div>
         <div class="button-container">
           <button class="form-button" id="submitbutton">Submit</button>

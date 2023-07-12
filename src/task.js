@@ -3,11 +3,12 @@ import { isWithinInterval, parseISO, format } from "date-fns";
 let tasks = [];
 
 class Task {
-  constructor(title, description, priority, dueDate) {
+  constructor(title, description, priority, dueDate, project) {
     this.title = title;
     this.description = description;
     this.priority = priority;
     this.dueDate = dueDate;
+    this.project = project;
   }
 }
 
@@ -77,11 +78,15 @@ function createCard(tab, taskTitle, taskDesc, taskPriority, taskDate) {
 
   const title = document.createElement("p");
   title.classList.add("title");
+
   const description = document.createElement("p");
   description.classList.add("description");
+
   const priority = document.createElement("p");
   priority.classList.add("priority");
+
   const date = document.createElement("p");
+
   const deleteBtn = document.createElement("button");
   deleteBtn.classList.add("deletebtn");
 
@@ -98,8 +103,9 @@ function createCard(tab, taskTitle, taskDesc, taskPriority, taskDate) {
   changePriorityColour(priority);
   date.textContent = taskDate;
   deleteBtn.textContent = "X";
+
   deleteBtn.addEventListener("click", function () {
-    deleteTask(taskTitle, tasks);
+    deleteTask(taskTitle);
     const cards = document.querySelectorAll(".card");
     cards.forEach((square) => {
       square.remove();
@@ -143,4 +149,4 @@ function checkDate(date) {
   }
 }
 
-export { createTask, Task, tasks };
+export { createTask, Task, tasks, createCard };

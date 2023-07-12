@@ -1,5 +1,5 @@
 import { createProject, createProjectTask } from "./project.js";
-import { createTask, tasks } from "./task.js";
+import { createTask } from "./task.js";
 
 function openSide() {
   const openBtn = document.querySelector(".menu");
@@ -71,11 +71,13 @@ function closeProjectForm() {
 }
 
 function openProjectTaskForm() {
-  const openForm = document.getElementById("addprojecttask");
-  openForm.addEventListener("click", function () {
-    document.querySelector(".form-project-task").style.display = "block";
-    document.querySelector(".form-task").style.display = "none";
-    document.querySelector(".form-project").style.display = "none";
+  const openForm = document.querySelectorAll(".add-project-task");
+  openForm.forEach((button) => {
+    button.addEventListener("click", function () {
+      document.querySelector(".form-project-task").style.display = "block";
+      document.querySelector(".form-task").style.display = "none";
+      document.querySelector(".form-project").style.display = "none";
+    });
   });
 }
 
@@ -92,7 +94,7 @@ function addTask() {
   const form = document.querySelector(".form-container");
   form.addEventListener("submit", function (event) {
     event.preventDefault();
-    createTask(tasks);
+    createTask();
     document.querySelector(".form-task").style.display = "none";
     form.reset();
   });
@@ -108,11 +110,11 @@ function addProject() {
   });
 }
 
-function addProjectTask(projectName, projectTask) {
+function addProjectTask() {
   const form = document.getElementById("project-task-form");
   form.addEventListener("submit", function (event) {
     event.preventDefault();
-    createProjectTask(projectName, projectTask);
+    createProjectTask();
     document.querySelector(".form-project-task").style.display = "none";
     form.reset();
   });
@@ -129,6 +131,7 @@ function initialLoad() {
   closeProjectTaskForm();
   addTask();
   addProject();
+  addProjectTask();
 }
 
 export { initialLoad, openTabs, openForm, openProjectTaskForm, addProjectTask };

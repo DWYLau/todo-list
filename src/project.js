@@ -1,8 +1,4 @@
-import {
-  openTabs,
-  openProjectTaskForm,
-  addProjectTask,
-} from "./buttonController.js";
+import { openTabs, openProjectTaskForm } from "./buttonController.js";
 import { Task } from "./task.js";
 
 let projects = [];
@@ -15,76 +11,66 @@ class Project {
 }
 
 function createProject() {
-  let name = document.getElementById("projectname");
-  let project = new Project(name.value);
+  let projectName = document.getElementById("projectname");
+  let project = new Project(projectName.value);
   projects.push(project);
-  createTabs();
-  createPage();
-  openTabs();
+  createContent(projects);
   openProjectTaskForm();
-  addProjectTask(project.name, project.tasks);
 }
 
-function createProjectTask(projectName, projectTaskArray) {
-  let tabID = document.getElementById(projectName);
+function createProjectTask() {
   let title = document.getElementById("project-task-title");
   let description = document.getElementById("project-task-description");
   let priority = document.getElementById("project-task-priority");
   let date = document.getElementById("project-task-date");
+  let projectName = "a";
   let task = new Task(
     title.value,
     description.value,
     priority.value,
-    date.value
+    date.value,
+    projectName
   );
-  projectTaskArray.push(task);
-  appendToProjectPage(tabID, projectTaskArray);
-}
-
-function appendToProjectPage(projectID, projectTask) {
-  const projectTab = projectID;
-  const taskArray = projectTask;
-  taskArray.forEach((task) => {
-    console.log(task);
+  console.log(task);
+  projects.forEach((project) => {
+    if (project.name === task.project) {
+      project.tasks.push(task);
+    }
   });
 }
 
-function createTabs() {
+function createContent(projectsArray) {
   const sidebar = document.querySelector(".tab");
   const allProjectBtns = sidebar.querySelectorAll(".project");
   allProjectBtns.forEach((button) => button.remove());
-  projects.forEach((project) => {
+
+  const main = document.getElementById("main");
+  const allProjectPages = document.querySelectorAll(".page");
+  allProjectPages.forEach((page) => page.remove());
+
+  projectsArray.forEach((project) => {
     const button = document.createElement("button");
     button.classList.add("tablinks");
     button.classList.add("project");
     button.textContent = project.name;
     sidebar.appendChild(button);
-  });
-}
 
-function createPage() {
-  const main = document.getElementById("main");
-  const allProjectPages = document.querySelectorAll(".page");
-  allProjectPages.forEach((page) => page.remove());
-
-  projects.forEach((project) => {
-    const mainpage = document.createElement("div");
-    mainpage.setAttribute("id", project.name);
-    mainpage.classList.add("tabcontent");
-    mainpage.classList.add("page");
-    main.appendChild(mainpage);
+    const content = document.createElement("div");
+    content.setAttribute("id", project.name);
+    content.classList.add("tabcontent");
+    content.classList.add("page");
+    main.appendChild(content);
 
     const header = document.createElement("h3");
     header.textContent = project.name;
-    mainpage.appendChild(header);
+    content.appendChild(header);
 
     const addTask = document.createElement("button");
     addTask.textContent = "Add Task";
     addTask.classList.add("add-button");
-    addTask.setAttribute("id", "addprojecttask");
-    addTask.addEventListener("click", function () {
-      openProjectTaskForm();
-    });
+    addTask.classList.add("add-project-task");
+    addTask.setAttribute("id", mainpage.id);
+    addTask.addEventListener("click", openProjectTaskForm);
 
     const deleteProject = document.createElement("button");
     deleteProject.textContent = "Delete Project";
@@ -94,16 +80,16 @@ function createPage() {
       removeProject(project.name);
     });
 
-    mainpage.appendChild(addTask);
-    mainpage.appendChild(deleteProject);
+    content.appendChild(addTask);
+    content.appendChild(deleteProject);
   });
+  openTabs();
 }
 
 function removeProject(projectName) {
   let index = projects.findIndex((x) => x.name === projectName);
   projects.splice(index, 1);
-  createTabs();
-  createPage();
+  createContent(projects);
   openTabs();
 }
 
