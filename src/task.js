@@ -1,4 +1,5 @@
 import { isWithinInterval, parseISO, format } from "date-fns";
+import { appendToProjectPage } from "./project";
 
 let tasks = [];
 
@@ -24,10 +25,11 @@ function createTask() {
     date.value
   );
   tasks.push(task);
-  appendToProjects();
+  appendToProjects(tasks);
+  appendToProjectPage();
 }
 
-function appendToProjects() {
+function appendToProjects(array) {
   const allTasksTab = document.getElementById("alltasks");
   const allTasksDivs = allTasksTab.querySelectorAll("div");
   allTasksDivs.forEach((div) => div.remove());
@@ -39,7 +41,7 @@ function appendToProjects() {
   const nextSevenTab = document.getElementById("nextseven");
   const nextSevenTaskDivs = nextSevenTab.querySelectorAll("div");
   nextSevenTaskDivs.forEach((div) => div.remove());
-  tasks.forEach((task) => {
+  array.forEach((task) => {
     createCard(
       allTasksTab,
       task.title,
@@ -69,8 +71,8 @@ function appendToProjects() {
 
 function createCard(tab, taskTitle, taskDesc, taskPriority, taskDate) {
   const card = document.createElement("div");
-  tab.appendChild(card);
   card.classList.add("card");
+  tab.appendChild(card);
 
   const checkbox = document.createElement("input");
   checkbox.setAttribute("type", "checkbox");
@@ -105,12 +107,13 @@ function createCard(tab, taskTitle, taskDesc, taskPriority, taskDate) {
   deleteBtn.textContent = "X";
 
   deleteBtn.addEventListener("click", function () {
-    deleteTask(taskTitle);
+    deleteTask(tasks, taskTitle);
     const cards = document.querySelectorAll(".card");
     cards.forEach((square) => {
       square.remove();
     });
-    appendToProjects();
+    appendToProjects(tasks);
+    appendToProjectPage();
   });
 }
 
@@ -125,9 +128,9 @@ function changePriorityColour(priority) {
   }
 }
 
-function deleteTask(title) {
-  let index = tasks.findIndex((x) => x.title === title);
-  tasks.splice(index, 1);
+function deleteTask(array, title) {
+  let index = array.findIndex((task) => task.title === title);
+  array.splice(index, 1);
 }
 
 function checkDate(date) {
@@ -149,4 +152,12 @@ function checkDate(date) {
   }
 }
 
-export { createTask, Task, tasks, createCard };
+export {
+  createTask,
+  Task,
+  tasks,
+  appendToProjects,
+  createCard,
+  changePriorityColour,
+  deleteTask,
+};

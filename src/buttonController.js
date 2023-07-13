@@ -134,4 +134,4 @@ function initialLoad() {
   addProjectTask();
 }
 
-export { initialLoad, openTabs, openForm, openProjectTaskForm, addProjectTask };
+export { initialLoad, openTabs, openForm, openProjectTaskForm };
