@@ -26,7 +26,6 @@ function createTask() {
   );
   tasks.push(task);
   appendToProjects(tasks);
-  appendToProjectPage();
 }
 
 function appendToProjects(array) {

@@ -115,7 +115,7 @@ body {
 }
 
 .tab button.active {
-  background-color: yellow;
+  background-color: #ddecf6;
 }
 
 .tabcontent {
@@ -314,13 +314,17 @@ body {
 
 .card .title {
   position: relative;
-  right: 50px;
+  right: 10px;
   font-weight: 500;
-  width: 100px;
+  width: 150px;
+  margin-left: 10px;
+  text-align: left;
 }
 
 .card .description {
-  width: 400px;
+  margin-right: 30px;
+  width: 500px;
+  text-align: left;
 }
 
 .card .priority {

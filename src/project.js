@@ -4,6 +4,7 @@ import {
   appendToProjects,
   deleteTask,
   changePriorityColour,
+  tasks,
 } from "./task.js";
 
 let projects = [];
@@ -42,6 +43,8 @@ function createProjectTask() {
       project.tasks.push(task);
     }
   });
+  tasks.push(task);
+  appendToProjects(tasks);
   appendToProjectPage();
 }
 
@@ -50,9 +53,9 @@ function appendToProjectPage() {
   allProjectPages.forEach((page) => {
     const allPageDivs = page.querySelectorAll("div");
     allPageDivs.forEach((div) => div.remove());
+    appendToProjects(tasks);
     projects.forEach((project) => {
       project.tasks.forEach((task) => {
-        appendToProjects(project.tasks);
         if (page.id === project.name) {
           createProjectCard(
             page,
@@ -179,8 +182,10 @@ function logID(event) {
 function removeProject(projectName) {
   let index = projects.findIndex((project) => project.name === projectName);
   projects.splice(index, 1);
+  tasks = tasks.filter((task) => task.project !== projectName);
   createContent(projects);
+  appendToProjects(tasks);
   openTabs();
 }
 
-export { createProject, createProjectTask, appendToProjectPage, taskProjectID };
+export { createProject, createProjectTask, appendToProjectPage };
