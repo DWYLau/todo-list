@@ -1,10 +1,11 @@
-import { openTabs, openProjectTaskForm } from "./buttonController.js";
+import { openTabs, openProjectTaskForm } from "./interface.js";
+import { storeTask, storeProject, removeStoredProject } from "./storage.js";
 import {
   Task,
-  appendToProjects,
-  deleteTask,
-  changePriorityColour,
   tasks,
+  deleteTask,
+  appendToProjects,
+  changePriorityColour,
 } from "./task.js";
 
 let projects = [];
@@ -44,6 +45,8 @@ function createProjectTask() {
     }
   });
   tasks.push(task);
+  storeProject(projects);
+  storeTask(tasks);
   appendToProjects(tasks);
   appendToProjectPage();
 }
@@ -166,6 +169,7 @@ function createContent(projectsArray) {
     deleteProject.setAttribute("id", "deleteproject");
     deleteProject.addEventListener("click", function () {
       removeProject(project.name);
+      removeStoredProject(project.name);
     });
 
     content.appendChild(addTask);
@@ -188,4 +192,10 @@ function removeProject(projectName) {
   openTabs();
 }
 
-export { createProject, createProjectTask, appendToProjectPage };
+export {
+  projects,
+  createContent,
+  createProject,
+  createProjectTask,
+  appendToProjectPage,
+};

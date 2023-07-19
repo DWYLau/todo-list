@@ -1,5 +1,6 @@
 import { isWithinInterval, parseISO, format } from "date-fns";
 import { appendToProjectPage } from "./project";
+import { storeTask, removeStoredTask } from "./storage";
 
 let tasks = [];
 
@@ -25,6 +26,8 @@ function createTask() {
     date.value
   );
   tasks.push(task);
+  storeTask(tasks);
+  console.log(tasks);
   appendToProjects(tasks);
 }
 
@@ -107,6 +110,7 @@ function createCard(tab, taskTitle, taskDesc, taskPriority, taskDate) {
 
   deleteBtn.addEventListener("click", function () {
     deleteTask(tasks, taskTitle);
+    removeStoredTask(taskTitle);
     const cards = document.querySelectorAll(".card");
     cards.forEach((square) => {
       square.remove();
@@ -152,11 +156,11 @@ function checkDate(date) {
 }
 
 export {
-  createTask,
   Task,
   tasks,
-  appendToProjects,
+  createTask,
   createCard,
-  changePriorityColour,
   deleteTask,
+  appendToProjects,
+  changePriorityColour,
 };
