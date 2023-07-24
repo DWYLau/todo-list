@@ -1,5 +1,11 @@
 import { openTabs, openProjectTaskForm } from "./interface.js";
-import { storeTask, storeProject, removeStoredProject } from "./storage.js";
+import {
+  storeTask,
+  storeProject,
+  removeStoredProject,
+  removeStoredTask,
+  removeStoredProjectTask,
+} from "./storage.js";
 import {
   Task,
   tasks,
@@ -124,6 +130,8 @@ function createProjectCard(
     cards.forEach((square) => {
       square.remove();
     });
+    removeStoredTask(taskTitle);
+    removeStoredProjectTask(taskTitle);
     appendToProjects(projectTasks);
     appendToProjectPage();
   });
