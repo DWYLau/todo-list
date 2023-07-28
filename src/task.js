@@ -1,6 +1,6 @@
 import { isWithinInterval, parseISO, format } from "date-fns";
-import { appendToProjectPage } from "./project";
-import { storeTask, removeStoredTask } from "./storage";
+import { appendToProjectPage, projects } from "./project";
+import { storeTask, removeStoredTask, storeProject } from "./storage";
 
 let tasks = [];
 
@@ -27,7 +27,6 @@ function createTask() {
   );
   tasks.push(task);
   storeTask(tasks);
-  console.log(tasks);
   appendToProjects(tasks);
 }
 
@@ -49,7 +48,8 @@ function appendToProjects(array) {
       task.title,
       task.description,
       task.priority,
-      task.dueDate
+      task.dueDate,
+      task.project
     );
     if (checkDate(task.dueDate) === true) {
       createCard(
@@ -57,7 +57,8 @@ function appendToProjects(array) {
         task.title,
         task.description,
         task.priority,
-        task.dueDate
+        task.dueDate,
+        task.project
       );
     } else if (checkDate(task.dueDate) === false) {
       createCard(
@@ -65,13 +66,21 @@ function appendToProjects(array) {
         task.title,
         task.description,
         task.priority,
-        task.dueDate
+        task.dueDate,
+        task.project
       );
     }
   });
 }
 
-function createCard(tab, taskTitle, taskDesc, taskPriority, taskDate) {
+function createCard(
+  tab,
+  taskTitle,
+  taskDesc,
+  taskPriority,
+  taskDate,
+  taskProject
+) {
   const card = document.createElement("div");
   card.classList.add("card");
   tab.appendChild(card);
@@ -90,9 +99,12 @@ function createCard(tab, taskTitle, taskDesc, taskPriority, taskDate) {
   priority.classList.add("priority");
 
   const date = document.createElement("p");
+  date.classList.add("date");
 
   const deleteBtn = document.createElement("button");
   deleteBtn.classList.add("deletebtn");
+
+  const projectName = taskProject;
 
   card.appendChild(checkbox);
   card.appendChild(title);
@@ -111,6 +123,11 @@ function createCard(tab, taskTitle, taskDesc, taskPriority, taskDate) {
   deleteBtn.addEventListener("click", function () {
     deleteTask(tasks, taskTitle);
     removeStoredTask(taskTitle);
+    if (projectName) {
+      deleteProjectTask(projectName, taskTitle);
+      storeProject(projects);
+    }
+
     const cards = document.querySelectorAll(".card");
     cards.forEach((square) => {
       square.remove();
@@ -134,6 +151,16 @@ function changePriorityColour(priority) {
 function deleteTask(array, title) {
   let index = array.findIndex((task) => task.title === title);
   array.splice(index, 1);
+}
+
+function deleteProjectTask(projectName, title) {
+  let index = projects.findIndex((project) => {
+    return project.name === projectName;
+  });
+  let taskIndex = projects[index].tasks.findIndex((task) => {
+    return task.title === title;
+  });
+  projects[index].tasks.splice(taskIndex, 1);
 }
 
 function checkDate(date) {

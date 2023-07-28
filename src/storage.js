@@ -1,4 +1,4 @@
-import { tasks, appendToProjects } from "./task";
+import { tasks, appendToProjects, deleteTask } from "./task";
 import { projects, createContent } from "./project";
 
 function storeTask(array) {
@@ -41,16 +41,6 @@ function removeStoredProject(projectName) {
   localStorage.setItem("projects", JSON.stringify(storedProject));
 }
 
-function removeStoredProjectTask(title) {
-  let storedProject = Array.from(JSON.parse(localStorage.getItem("projects")));
-  console.log(storedProject);
-  storedProject.forEach((project) => {
-    let index = project.tasks.findIndex((task) => task.title === title);
-    project.tasks.splice(index, 1);
-  });
-  localStorage.setItem("projects", JSON.stringify(storedProject));
-}
-
 export {
   loadTasks,
   storeTask,
@@ -58,5 +48,4 @@ export {
   storeProject,
   loadProject,
   removeStoredProject,
-  removeStoredProjectTask,
 };

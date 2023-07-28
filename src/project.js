@@ -4,7 +4,6 @@ import {
   storeProject,
   removeStoredProject,
   removeStoredTask,
-  removeStoredProjectTask,
 } from "./storage.js";
 import {
   Task,
@@ -106,6 +105,7 @@ function createProjectCard(
   priority.classList.add("priority");
 
   const date = document.createElement("p");
+  date.classList.add("date");
 
   const deleteBtn = document.createElement("button");
   deleteBtn.classList.add("deletebtn");
@@ -125,13 +125,14 @@ function createProjectCard(
   deleteBtn.textContent = "X";
 
   deleteBtn.addEventListener("click", function () {
+    deleteTask(tasks, taskTitle);
     deleteTask(projectTasks, taskTitle);
     const cards = document.querySelectorAll(".card");
     cards.forEach((square) => {
       square.remove();
     });
     removeStoredTask(taskTitle);
-    removeStoredProjectTask(taskTitle);
+    storeProject(projects);
     appendToProjects(projectTasks);
     appendToProjectPage();
   });

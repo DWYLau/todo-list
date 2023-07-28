@@ -4,8 +4,8 @@ import { createTask } from "./task.js";
 function openSide() {
   const openBtn = document.querySelector(".menu");
   openBtn.addEventListener("click", function () {
-    document.getElementById("navbar").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
+    document.getElementById("navbar").style.width = "220px";
+    document.getElementById("main").style.marginLeft = "220px";
   });
 }
 
