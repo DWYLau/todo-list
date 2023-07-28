@@ -6,6 +6,8 @@ function storeTask(array) {
 }
 
 function loadTasks() {
+  let array = [];
+  localStorage.setItem("tasks", JSON.stringify(array));
   let storedTasks = Array.from(JSON.parse(localStorage.getItem("tasks")));
   tasks.push(storedTasks);
   tasks = tasks.flat();
@@ -24,6 +26,8 @@ function storeProject(array) {
 }
 
 function loadProject() {
+  let array = [];
+  localStorage.setItem("projects", JSON.stringify(array));
   let storedProject = Array.from(JSON.parse(localStorage.getItem("projects")));
   projects.push(storedProject);
   projects = projects.flat();
