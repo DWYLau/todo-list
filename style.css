@@ -179,8 +179,18 @@ body {
 }
 
 .form-task,
-.form-project,
 .form-project-task {
+  display: none;
+  position: fixed;
+  top: 200px;
+  right: 500px;
+  border: 2px solid black;
+  border-radius: 10px;
+  z-index: 9;
+  animation: fadeIn 0.3s;
+}
+
+.form-project {
   display: none;
   position: fixed;
   top: 200px;
@@ -197,7 +207,7 @@ body {
   background-color: white;
   gap: 25px;
   font-family: Roboto;
-  height: 30vh;
+  height: 35vh;
   width: 25vw;
   padding: 20px;
 }
@@ -208,8 +218,8 @@ body {
   background-color: white;
   gap: 15px;
   font-family: Roboto;
-  height: 40vh;
-  width: 20vw;
+  width: 35vw;
+  height: 45vh;
   padding: 20px;
   border-radius: 10px;
 }
@@ -395,21 +405,6 @@ body {
 @media (-webkit-device-pixel-ratio: 1.25) {
   * {
     zoom: 0.8;
-  }
-}
-
-@media (min-width: 1281px) {
-  #projectform {
-    height: 35vh;
-    width: 30vw;
-  }
-
-  .form-container {
-    width: 30vw;
-  }
-
-  .card {
-    width: 75%;
   }
 }
 
