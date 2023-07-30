@@ -45,22 +45,16 @@
     <div class="form-task">
       <form action="#" class="form-container">
         <h1>Create a task</h1>
-        <label for="title">Title *</label>
+        <label for="title">Description *</label>
         <input
           type="text"
           id="title"
-          placeholder="Title"
+          placeholder="Description of task"
           name="title"
+          maxlength="45"
           required
         />
 
-        <label for="description">Description</label>
-        <input
-          type="text"
-          id="description"
-          placeholder="Enter task details"
-          name="description"
-        />
         <div class="inputs">
           <label for="priority">Priority</label>
           <select id="priority" name="priority">
@@ -90,6 +84,7 @@
           id="projectname"
           placeholder="Project Name"
           name="projectname"
+          maxlength="15"
           required
         />
         <div class="button-container">
@@ -104,22 +99,16 @@
     <div class="form-project-task">
       <form action="#" id="project-task-form" class="form-container">
         <h1>Add a task to the project</h1>
-        <label for="project-task-title">Title *</label>
+        <label for="project-task-title">Description *</label>
         <input
           type="text"
           id="project-task-title"
-          placeholder="Title"
+          placeholder="Description of task"
           name="project-task-title"
+          maxlength="45"
           required
         />
 
-        <label for="project-task-description">Description</label>
-        <input
-          type="text"
-          id="project-task-description"
-          placeholder="Enter task details"
-          name="project-task-description"
-        />
         <div class="inputs">
           <label for="project-task-priority">Priority</label>
           <select id="project-task-priority" name="project-task-priority">
