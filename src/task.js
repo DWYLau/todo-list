@@ -5,9 +5,8 @@ import { storeTask, removeStoredTask, storeProject } from "./storage";
 let tasks = [];
 
 class Task {
-  constructor(title, description, priority, dueDate, project) {
+  constructor(title, priority, dueDate, project) {
     this.title = title;
-    this.description = description;
     this.priority = priority;
     this.dueDate = dueDate;
     this.project = project;
@@ -16,15 +15,9 @@ class Task {
 
 function createTask() {
   let title = document.getElementById("title");
-  let description = document.getElementById("description");
   let priority = document.getElementById("priority");
   let date = document.getElementById("date");
-  let task = new Task(
-    title.value,
-    description.value,
-    priority.value,
-    date.value
-  );
+  let task = new Task(title.value, priority.value, date.value);
   tasks.push(task);
   storeTask(tasks);
   appendToProjects(tasks);
@@ -46,7 +39,6 @@ function appendToProjects(array) {
     createCard(
       allTasksTab,
       task.title,
-      task.description,
       task.priority,
       task.dueDate,
       task.project
@@ -55,7 +47,6 @@ function appendToProjects(array) {
       createCard(
         todayTab,
         task.title,
-        task.description,
         task.priority,
         task.dueDate,
         task.project
@@ -64,7 +55,6 @@ function appendToProjects(array) {
       createCard(
         nextSevenTab,
         task.title,
-        task.description,
         task.priority,
         task.dueDate,
         task.project
@@ -73,14 +63,7 @@ function appendToProjects(array) {
   });
 }
 
-function createCard(
-  tab,
-  taskTitle,
-  taskDesc,
-  taskPriority,
-  taskDate,
-  taskProject
-) {
+function createCard(tab, taskTitle, taskPriority, taskDate, taskProject) {
   const card = document.createElement("div");
   card.classList.add("card");
   tab.appendChild(card);
@@ -91,9 +74,6 @@ function createCard(
 
   const title = document.createElement("p");
   title.classList.add("title");
-
-  const description = document.createElement("p");
-  description.classList.add("description");
 
   const priority = document.createElement("p");
   priority.classList.add("priority");
@@ -108,13 +88,11 @@ function createCard(
 
   card.appendChild(checkbox);
   card.appendChild(title);
-  card.appendChild(description);
   card.appendChild(priority);
   card.appendChild(date);
   card.appendChild(deleteBtn);
 
   title.textContent = taskTitle;
-  description.textContent = taskDesc;
   priority.textContent = taskPriority;
   changePriorityColour(priority);
   date.textContent = taskDate;

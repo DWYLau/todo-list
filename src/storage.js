@@ -1,4 +1,4 @@
-import { tasks, appendToProjects, deleteTask } from "./task";
+import { tasks, appendToProjects } from "./task";
 import { projects, createContent } from "./project";
 
 function storeTask(array) {

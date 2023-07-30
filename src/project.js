@@ -33,17 +33,10 @@ function createProject() {
 
 function createProjectTask() {
   let title = document.getElementById("project-task-title");
-  let description = document.getElementById("project-task-description");
   let priority = document.getElementById("project-task-priority");
   let date = document.getElementById("project-task-date");
   let taskProjectName = taskProjectID;
-  let task = new Task(
-    title.value,
-    description.value,
-    priority.value,
-    date.value,
-    taskProjectName
-  );
+  let task = new Task(title.value, priority.value, date.value, taskProjectName);
   projects.forEach((project) => {
     if (project.name === task.project) {
       project.tasks.push(task);
@@ -68,7 +61,6 @@ function appendToProjectPage() {
           createProjectCard(
             page,
             task.title,
-            task.description,
             task.priority,
             task.dueDate,
             project.tasks
@@ -82,7 +74,6 @@ function appendToProjectPage() {
 function createProjectCard(
   tab,
   taskTitle,
-  taskDesc,
   taskPriority,
   taskDate,
   projectTasks
@@ -98,9 +89,6 @@ function createProjectCard(
   const title = document.createElement("p");
   title.classList.add("title");
 
-  const description = document.createElement("p");
-  description.classList.add("description");
-
   const priority = document.createElement("p");
   priority.classList.add("priority");
 
@@ -112,13 +100,11 @@ function createProjectCard(
 
   card.appendChild(checkbox);
   card.appendChild(title);
-  card.appendChild(description);
   card.appendChild(priority);
   card.appendChild(date);
   card.appendChild(deleteBtn);
 
   title.textContent = taskTitle;
-  description.textContent = taskDesc;
   priority.textContent = taskPriority;
   changePriorityColour(priority);
   date.textContent = taskDate;
