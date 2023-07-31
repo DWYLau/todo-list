@@ -10,7 +10,7 @@ body {
 #main {
   transition: margin-left 0.5s;
   padding: 20px;
-  margin-left: 250px;
+  margin-left: 220px;
   background-color: whitesmoke;
   height: 85vh;
 }
@@ -31,7 +31,7 @@ body {
 }
 
 .header > h1 {
-  font-size: 4em;
+  font-size: 4rem;
   font-weight: bold;
 }
 
@@ -49,7 +49,7 @@ body {
 
 .nav {
   height: 85vh;
-  width: 250px;
+  width: 220px;
   position: absolute;
   z-index: 1;
   left: 0;
@@ -66,7 +66,6 @@ body {
 .nav a {
   padding: 5px 10px 10px 40px;
   text-decoration: none;
-  font-size: 25px;
   color: #818181;
   display: block;
   transition: 0.3s;
@@ -103,7 +102,7 @@ body {
   border: none;
   outline: none;
   text-align: center;
-  font-size: 1.4em;
+  font-size: 1.6rem;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -183,7 +182,7 @@ body {
   display: none;
   position: fixed;
   top: 200px;
-  right: 500px;
+  right: 700px;
   border: 2px solid black;
   border-radius: 10px;
   z-index: 9;
@@ -194,7 +193,7 @@ body {
   display: none;
   position: fixed;
   top: 200px;
-  right: 600px;
+  right: 700px;
   border: 2px solid black;
   border-radius: 10px;
   z-index: 9;
@@ -207,8 +206,8 @@ body {
   background-color: white;
   gap: 25px;
   font-family: Roboto;
-  height: 35vh;
-  width: 25vw;
+  height: 20rem;
+  width: 25rem;
   padding: 20px;
 }
 
@@ -218,8 +217,8 @@ body {
   background-color: white;
   gap: 15px;
   font-family: Roboto;
-  width: 35vw;
-  height: 45vh;
+  height: 22rem;
+  width: 30rem;
   padding: 20px;
   border-radius: 10px;
 }
@@ -233,13 +232,6 @@ body {
 .form-container label {
   font-size: 1.5em;
   padding: 5px;
-}
-
-.error {
-  display: none;
-  font-size: 1em;
-  margin-left: 5px;
-  color: red;
 }
 
 .form-container input {
@@ -315,7 +307,7 @@ body {
   font-family: Roboto;
   font-size: 1.5em;
   height: 60px;
-  width: 75%;
+  width: 70%;
   background-color: #dde6ed;
   display: flex;
   justify-content: space-evenly;
@@ -331,7 +323,6 @@ body {
   flex-grow: 2;
   right: 10px;
   font-weight: 500;
-  width: 500px;
   margin-left: 10px;
   text-align: left;
 }
