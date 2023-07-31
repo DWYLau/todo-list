@@ -18,9 +18,17 @@ function createTask() {
   let priority = document.getElementById("priority");
   let date = document.getElementById("date");
   let task = new Task(title.value, priority.value, date.value);
-  tasks.push(task);
+  checkTasks(task);
   storeTask(tasks);
   appendToProjects(tasks);
+}
+
+function checkTasks(task) {
+  if (tasks.length >= 8) {
+    alert("Reached full capacity for tasks");
+  } else {
+    tasks.push(task);
+  }
 }
 
 function appendToProjects(array) {
@@ -46,6 +54,13 @@ function appendToProjects(array) {
     if (checkDate(task.dueDate) === true) {
       createCard(
         todayTab,
+        task.title,
+        task.priority,
+        task.dueDate,
+        task.project
+      );
+      createCard(
+        nextSevenTab,
         task.title,
         task.priority,
         task.dueDate,
@@ -163,6 +178,7 @@ function checkDate(date) {
 export {
   Task,
   tasks,
+  checkTasks,
   createTask,
   createCard,
   deleteTask,
