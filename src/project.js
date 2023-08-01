@@ -9,7 +9,6 @@ import {
   Task,
   tasks,
   deleteTask,
-  checkTasks,
   appendToProjects,
   changePriorityColour,
 } from "./task.js";
@@ -27,9 +26,19 @@ class Project {
 function createProject() {
   let projectName = document.getElementById("projectname");
   let project = new Project(projectName.value);
-  checkProject(project);
+  projects.push(project);
+  checkProject();
+  console.log(projects);
   createContent(projects);
   openProjectTaskForm();
+}
+
+function checkProject() {
+  if (projects.length >= 5) {
+    document.getElementById("body").style.overflow = "scroll";
+  } else {
+    document.getElementById("body").style.overflow = "hidden";
+  }
 }
 
 function createProjectTask() {
@@ -43,19 +52,11 @@ function createProjectTask() {
       project.tasks.push(task);
     }
   });
-  checkTasks(task);
+  tasks.push(task);
   storeProject(projects);
   storeTask(tasks);
   appendToProjects(tasks);
   appendToProjectPage();
-}
-
-function checkProject(project) {
-  if (projects.length >= 4) {
-    alert("Reached full capacity for projects");
-  } else {
-    projects.push(project);
-  }
 }
 
 function appendToProjectPage() {
@@ -194,6 +195,7 @@ function removeProject(projectName) {
   let alltasks = document.getElementById("alltasks");
   alltasks.classList.add("active");
   createContent(projects);
+  checkProject();
   appendToProjects(tasks);
   openTabs();
 }

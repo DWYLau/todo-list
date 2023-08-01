@@ -18,16 +18,18 @@ function createTask() {
   let priority = document.getElementById("priority");
   let date = document.getElementById("date");
   let task = new Task(title.value, priority.value, date.value);
-  checkTasks(task);
+  tasks.push(task);
+  checkTasks();
   storeTask(tasks);
+  console.log(tasks.length);
   appendToProjects(tasks);
 }
 
-function checkTasks(task) {
-  if (tasks.length >= 8) {
-    alert("Reached full capacity for tasks");
+function checkTasks() {
+  if (tasks.length >= 9) {
+    document.getElementById("body").style.overflowY = "scroll";
   } else {
-    tasks.push(task);
+    document.getElementById("body").style.overflowY = "hidden";
   }
 }
 
@@ -144,6 +146,7 @@ function changePriorityColour(priority) {
 function deleteTask(array, title) {
   let index = array.findIndex((task) => task.title === title);
   array.splice(index, 1);
+  checkTasks();
 }
 
 function deleteProjectTask(projectName, title) {
@@ -178,7 +181,6 @@ function checkDate(date) {
 export {
   Task,
   tasks,
-  checkTasks,
   createTask,
   createCard,
   deleteTask,
